@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Test\HomeForm\Api\Data\ContactInterface" type="Test\HomeForm\Model\Contact"/>
+    <preference for="Test\HomeForm\Api\CountryApiServiceInterface" type="Test\HomeForm\Model\Country\CountryApiService"/>
+    <preference for="Test\HomeForm\Api\CountryManagerInterface" type="Test\HomeForm\Model\Country\CountryManager"/>
+    <preference for="Test\HomeForm\Api\CountryRepositoryInterface" type="Test\HomeForm\Model\CountryRepository"/>
+    <preference for="Test\HomeForm\Api\ContactRepositoryInterface" type="Test\HomeForm\Model\ContactRepository"/>
+    <preference for="Test\HomeForm\Api\Data\CountrySearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults" />
+    <preference for="Test\HomeForm\Api\Data\ContactSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults" />
+    <type name="Test\HomeForm\Model\ResourceModel\Contact">
+        <arguments>
+            <argument name="connectionName" xsi:type="string">custom</argument>
+        </arguments>
+    </type>
+    <virtualType name="Test\HomeForm\Model\Method\TestDebug" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/testForm.log</argument>
+         </arguments>
+    </virtualType>
+    <virtualType name="Test\HomeForm\Model\Method\TestLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+        <argument name="handlers" xsi:type="array">
+            <item name="debug" xsi:type="object">Test\HomeForm\Model\Method\TestDebug</item>
+        </argument>
+        </arguments>
+    </virtualType>
+    <type name="Test\HomeForm\Api\CountryApiServiceInterface">
+        <arguments>
+            <argument name="logger" xsi:type="object">Test\HomeForm\Model\Method\TestLogger</argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+            
+                <!-- main menu configuration acl -->
+                <resource id="Test_HomeForm::general" title="Test HomeForm" sortOrder="33">
+                    <resource id="Test_HomeForm::list" title="Lists" sortOrder="1">
+                        <resource id="Test_HomeForm::list_contacts" title="Contacts" sortOrder="2" />
+                    </resource>
+
+                </resource>
+
+            </resource>
+        </resources>
+    </acl>
+    
+</config>

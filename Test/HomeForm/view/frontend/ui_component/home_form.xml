@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">home_form.home_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Form Title</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <deps>
+            <dep>home_form.home_form_data_source</dep>
+        </deps>
+        <namespace>home_form</namespace>
+        <dataScope>data</dataScope>
+    </settings>
+    <dataSource name="home_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Test_HomeForm/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="homeform/index/save"/>
+        </settings>
+        <dataProvider class="Test\HomeForm\Model\HomeForm\DataProviderForm" name="home_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    
+    <fieldset name="general">
+        <settings>
+            <label translate="true">Contact Form</label>
+            <collapsible>false</collapsible>
+        </settings>
+         <field name="name" formElement="input" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">data</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <dataScope>contact.name</dataScope>
+                <label translate="true">Name</label>
+            </settings>
+        </field>
+        
+        <field name="email" formElement="input" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">data</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-email" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <dataScope>contact.email</dataScope>
+                <label translate="true">Email</label>
+            </settings>
+        </field>
+        
+        <field name="phone" formElement="input" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">data</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-phoneStrict" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <dataScope>contact.phone</dataScope>
+                <label translate="true">Phone</label>
+            </settings>
+        </field>
+        
+        <field name="address" formElement="input" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">data</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <dataScope>contact.address</dataScope>
+                <label translate="true">Address</label>
+            </settings>
+        </field>
+
+        <field name="checked" formElement="checkbox" sortOrder="50">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">data</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>boolean</dataType>
+                <visible>true</visible>
+                <dataScope>contact.checked</dataScope>
+                <label translate="true">Checkbox</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        
+        <field name="country_id" formElement="select" sortOrder="60">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">data</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <dataScope>contact.country_id</dataScope>
+                <label translate="true">Country</label>
+            </settings>
+             <formElements>
+                    <select>
+                        <settings>
+                            <options class="Test\HomeForm\Model\Source\Country"/>
+                        </settings>
+                    </select>
+             </formElements>
+        </field>
+        <fieldset name="buttons">
+            <settings>
+                <label/>
+                <collapsible>false</collapsible>
+            </settings>
+            <field name="clear" formElement="button" sortOrder="70">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">data</item>
+                         <item name="actions" xsi:type="array">
+                             <item name="0" xsi:type="array">
+                                <item name="targetName" xsi:type="string">home_form.home_form_data_source</item>
+                                <item name="actionName" xsi:type="string">reset</item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataScope>clear</dataScope>
+                </settings>
+               <formElements>
+                    <button>
+                       <settings>
+                           <title translate="true">Clear</title>
+                       </settings>
+                    </button>
+               </formElements>
+            </field>
+      
+             <button name="submit" sortOrder="78">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">data</item>
+                        <item name="actions" xsi:type="array">
+                             <item name="0" xsi:type="array">
+                                <item name="targetName" xsi:type="string">home_form.home_form_data_source</item>
+                                <item name="actionName" xsi:type="string">saveForm</item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataScope>submit</dataScope>
+                    <title translate="true">Submit</title>
+                </settings>
+            </button>
+         </fieldset>
+    </fieldset>
+    
+</form>

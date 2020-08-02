@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--  -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="country" resource="default" engine="innodb" comment="TestForm Country Table">
+        <column xsi:type="smallint" name="id" padding="6" unsigned="false" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="varchar" name="code" nullable="false" length="2" comment="Country Id in ISO-2"/>
+        <column xsi:type="varchar" name="name" nullable="true" length="255" comment="Country Name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+         <index referenceId="COUNTRY_CODE" indexType="btree">
+            <column name="code"/>
+        </index>
+    </table>
+
+</schema>

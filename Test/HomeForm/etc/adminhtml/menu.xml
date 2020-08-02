@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Home_Form::menu" title="Home Form" translate="title" module="Test_HomeForm" 
+             sortOrder="33" dependsOnModule="Test_HomeForm" resource="Test_HomeForm::general"/>
+    
+        <add id="Home_Form::menu_list" title="List" module="Test_HomeForm" sortOrder="10" parent="Home_Form::menu" resource="Test_HomeForm::list" />
+        <add id="Home_Form::menu_list_contacts" title="Contacts" module="Test_HomeForm" 
+                      sortOrder="15" parent="Home_Form::menu_list" resource="Home_Form::list_contacts" action="homeform/contacts" />
+
+    </menu>
+</config>

@@ -1,0 +1,15 @@
+{
+    "country": {
+        "column": {
+            "id": true,
+            "name": true,
+            "code": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        },
+        "index": {
+            "COUNTRY_CODE": true
+        }
+    }
+}
